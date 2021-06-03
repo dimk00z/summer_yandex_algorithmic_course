@@ -18,10 +18,22 @@ def count_frequent_element_with_set(string: str) -> dict:
     return {freq_letter: freq_letter_count}
 
 
+def count_frequent_element_with_dict(string: str) -> dict:
+    dct = {}
+    for current_letter in string:
+        if current_letter in dct:
+            dct[current_letter] += 1
+        else:
+            dct[current_letter] = 1
+    frequent_element = max(dct, key=dct.get)
+    return {frequent_element: dct[frequent_element]}
+
+
 def main():
     s = 'aaaaddddcccccccccc'
     print(count_frequent_element(s))
     print(count_frequent_element_with_set(s))
+    print(count_frequent_element_with_dict(s))
 
 
 if __name__ == '__main__':

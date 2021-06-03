@@ -4,9 +4,24 @@ def count_frequent_element(string: str) -> int:
         string))[0]
 
 
+def count_frequent_element_with_set(string: str) -> dict:
+    freq_letter = ''
+    freq_letter_count = 0
+    for current_letter in set(string):
+        current_letter_count = 0
+        for letter in string:
+            if current_letter == letter:
+                current_letter_count += 1
+        if current_letter_count > freq_letter_count:
+            freq_letter = current_letter
+            freq_letter_count = current_letter_count
+    return {freq_letter: freq_letter_count}
+
+
 def main():
     s = 'aaaaddddcccccccccc'
     print(count_frequent_element(s))
+    print(count_frequent_element_with_set(s))
 
 
 if __name__ == '__main__':

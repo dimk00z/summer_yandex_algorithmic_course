@@ -10,8 +10,8 @@ def get_tools(N, K, M):
             blank_count = N//K
             N = N % K + blank_count*tools_remainder
             tools_count += blank_count * tools_per_blank
-
-    melt(K, M)
+    if M <= K:
+        melt(K, M)
     return str(tools_count)
 
 

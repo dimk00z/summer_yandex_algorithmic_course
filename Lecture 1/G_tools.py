@@ -3,10 +3,14 @@ def get_tools(N, K, M):
 
     def melt(K, M):
         nonlocal N, tools_count
+        tools_per_blank = K//M
+        tools_remainder = K % M
         while (N >= K):
-            N -= K
-            tools_count += K//M
-            N += K % M
+
+            blank_count = N//K
+            N = N % K + blank_count*tools_remainder
+            tools_count += blank_count * tools_per_blank
+
     melt(K, M)
     return str(tools_count)
 
@@ -20,4 +24,4 @@ with open('output.txt', 'w') as file:
 print(get_tools(10, 5, 2))
 print(get_tools(13, 5, 3))
 print(get_tools(14, 5, 3))
-print(get_tools(200, 30, 3))
+print(get_tools(200, 10, 3))

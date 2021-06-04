@@ -1,15 +1,15 @@
 def calculate_times(a, b, n, m) -> str:
     min_time_for_first_line = (a+1)*n-a
     max_time_for_first_line = (a+1)*n+a
-    min_time_for_sexond_line = (b+1)*m-b
-    max_time_for_sexond_line = (b+1)*m+b
-    if min_time_for_first_line > max_time_for_sexond_line \
-            or min_time_for_sexond_line > max_time_for_first_line:
+    min_time_for_second_line = (b+1)*m-b
+    max_time_for_second_line = (b+1)*m+b
+    if min_time_for_first_line > max_time_for_second_line \
+            or min_time_for_second_line > max_time_for_first_line:
         return '-1'
     return ' '.join(
         map(str,
-            (max(min_time_for_first_line, min_time_for_sexond_line),
-             min(max_time_for_first_line, max_time_for_sexond_line))))
+            (max(min_time_for_first_line, min_time_for_second_line),
+             min(max_time_for_first_line, max_time_for_second_line))))
 
 
 with open('input.txt') as file:

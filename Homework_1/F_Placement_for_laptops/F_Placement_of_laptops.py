@@ -1,12 +1,30 @@
 
 
-def get_table_sizes(
-        Laptop_width_1, Laptop_height_1,
-        Laptop_width_2, Laptop_height_2):
-    pass
+def get_table_size(
+        a1, b1,
+        a2, b2):
+    tables = [
+        [a1+a2, max(b1, b2)],
+        [a1+b2, max(b1, a2)],
+
+        [b1+b2, max(a1, a2)],
+        [b1+a2, max(a1, b2)],
+    ]
+    min_table = tables[0]
+    min_square = min_table[0]*min_table[1]
+    for table in tables:
+        if min_table is table:
+            continue
+        current_square = table[0]*table[1]
+        if current_square < min_square:
+            min_table = table
+            min_square = current_square
+    return min_table
 
 
 with open('input.txt') as file:
-    Laptop_width_1, Laptop_height_1, Laptop_width_2, Laptop_height_2 = map(
+    a1, b1, a2, b2 = map(
         int, file.read().split())
-print(Laptop_width_1, Laptop_height_1, Laptop_width_2, Laptop_height_2)
+
+with open('output.txt', 'w') as file:
+    file.write(' '.join(map(str, get_table_size(a1, b1, a2, b2))))

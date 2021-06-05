@@ -1,8 +1,6 @@
 def count_neighbors(number_list):
     neighbors_count = 0
-    for element_position, element in enumerate(number_list[1:]):
-        if element_position+2 == len(number_list):
-            break
+    for element_position, element in enumerate(number_list[1:-1:]):
         if (element > number_list[element_position]) \
                 and (element > number_list[element_position+2]):
 

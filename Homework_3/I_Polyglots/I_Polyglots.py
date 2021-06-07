@@ -1,5 +1,4 @@
 from functools import reduce
-from random import randint
 
 with open('input.txt') as file:
     lines = [line.strip() for line in file.readlines()]

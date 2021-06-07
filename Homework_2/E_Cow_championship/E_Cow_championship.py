@@ -24,7 +24,7 @@ def fetch_Vasya_position(champions_number, results):
 
             if results[max_position+position] > results[max_position+position+1]:
                 Vasya_result = value
-                # print(str(Vasya_result) + '  !!')
+                print(str(Vasya_result) + '  !!')
                 break
     if Vasya_result:
         results = sorted(results,  reverse=True)

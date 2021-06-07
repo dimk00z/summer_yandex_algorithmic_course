@@ -25,6 +25,7 @@ def get_P1_and_N1(k1, m, k2, p2, n2):
     '''
     if m == 1 and p2 == 1:
         return 1, 1
+
     return p1, n1
 
 

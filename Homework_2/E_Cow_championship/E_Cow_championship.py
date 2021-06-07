@@ -7,9 +7,8 @@ def fetch_Vasya_position(champions_number, results):
     Vasya_result = results[Vasya_position]
     if (Vasya_result % 10) != 5 or results[Vasya_position+1] > Vasya_result:
         return 0
-    if Vasya_result == max_result:
-        Vasya_position = max_position
-    return Vasya_position+1
+    results = sorted(results,  reverse=True)
+    return results.index(Vasya_result)+1
 
 
 with open('input.txt') as file:

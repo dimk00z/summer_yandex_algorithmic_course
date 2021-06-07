@@ -1,24 +1,31 @@
-def round_up(v, d):
-    result = v // d + (1 if v % d else 0)
-    return result
+'''
+объясняю 
+пусть n - количество квартир на этаже
+тогда в одном подъезде m * n квартир 
+k2 = (p2 - 1) * m * n + (n2 - 1) * n + альфа
+(p2 - 1) * m * n - это сколько у нас квартир в подъездах до нашего
+(n2 - 1) * n - это сколько квартир в нашем подъезде в этажах ниже нашего 
+альфа - число меньшее чем n обозначающее (от 1 до n вроде)
+
+Всё как тут написано, только альфа - от 0 до n-1, и выражал n, изменяя альфа. 
+То есть n=(k2-альфа)/(m*(p2-1) +(n2-1)), перебирал альфа, с целью, чтобы делилось нацело,
+и при этом альфа должна быть < n. Альфа - это номер квартиры на этаже, но с нуля. 
+Основная идея такая, дальше появляются приколы, когда таких n оказывается несколько например),
+тестов нормально так пришлось посмотреть
+'''
 
 
-def get_P1_and_N1(room_1, max_level, room_old, p_old, level_old):
-    count_room_for_level = 0
-    if max_level == 1 and p_old == 1:
+def get_P1_and_N1(k1, m, k2, p2, n2):
+    '''
+    m - количество этажей
+    k1 - номер квартиры
+    k2 - номер пред квартиры
+    p2 - подъезд  k2
+    n2 - этаж k2 
+    '''
+    if m == 1 and p2 == 1:
         return 1, 1
-
-    for count_room_for_level in range(40):
-        if ((level_old - 1) * count_room_for_level) *\
-                p_old < room_old < (count_room_for_level * level_old) * p_old:
-            break
-    else:
-        return -1
-
-    p_new = round_up(room_1, (max_level * count_room_for_level))
-
-    level_new = round_up(room_1, count_room_for_level) % max_level
-    return p_new, level_new
+    return p1, n1
 
 
 with open('input.txt') as file:

@@ -25,7 +25,6 @@ with open('input.txt') as file:
     n, m = tuple(map(int, lines[0].split()))
     Anya_colors = set([int(color) for color in lines[1:n+1]])
     Borya_colors = set([int(color) for color in lines[n+1:]])
-    # print(Anya_colors, Borya_colors)
 
 
 with open('output.txt', 'w') as file:

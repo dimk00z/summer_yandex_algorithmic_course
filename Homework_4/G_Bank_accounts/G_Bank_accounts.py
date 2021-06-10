@@ -6,7 +6,17 @@ def update_bank_account(bank_accounts, customer_name, money):
 
 
 def get_balance(bank_accounts, customer_name):
+    if customer_name in bank_accounts:
+        return str(bank_accounts[customer_name])
     return 'ERROR'
+
+
+def income(bank_accounts, percents):
+    for customer_name in bank_accounts:
+        if bank_accounts[customer_name] > 0:
+            bank_accounts[customer_name] = int(
+                bank_accounts[customer_name] + (bank_accounts[
+                    customer_name] * percents/100))
 
 
 def do_bank_operation(banks_operations) -> str:
@@ -19,34 +29,23 @@ def do_bank_operation(banks_operations) -> str:
                 bank_accounts, customer_name=bank_operation[1]))
             continue
         if bank_operation[0] == 'INCOME':
-            # добавить расчет
+            income(bank_accounts, percents=int(bank_operation[1]))
             continue
         customer_name = bank_operation[1]
         if bank_operation[0] == 'DEPOSIT':
             update_bank_account(bank_accounts, customer_name,
-                                bank_operation[2])
+                                int(bank_operation[2]))
             continue
         if bank_operation[0] == 'WITHDRAW':
             update_bank_account(bank_accounts, customer_name,
-                                -1*bank_operation[2])
+                                -1*int(bank_operation[2]))
             continue
         if bank_operation[0] == 'TRANSFER':
             update_bank_account(bank_accounts, bank_operation[2],
-                                bank_operation[3])
+                                int(bank_operation[3]))
             update_bank_account(bank_accounts, customer_name,
-                                -1*bank_operation[2])
-            continue
-    print(bank_accounts)
-    #     customer, product, product_count = line.split()
-    #     if customer not in customers:
-    #         customers[customer] = {}
-    #     if product not in customers[customer]:
-    #         customers[customer][product] = 0
-    #     customers[customer][product] += int(product_count)
-    # for customer in sorted(customers):
-    #     result.append(f'{customer}:')
-    #     for product, product_count in sorted(customers[customer].items()):
-    #         result.append(f'{product} {product_count}')
+                                -1*int(bank_operation[3]))
+
     return '\n'.join(result)
 
 

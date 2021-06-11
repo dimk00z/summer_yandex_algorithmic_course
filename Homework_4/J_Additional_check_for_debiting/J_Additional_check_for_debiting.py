@@ -9,7 +9,8 @@ def get_the_most_frequent_word(c, d, text, n):
     key_words = set()
     if n:
         for line in text[:n]:
-            key_words.add(line.strip())
+            key_words.add(
+                line.strip() if is_case_sensitive else line.strip().lower())
     start = 0 if not n else n
     for line in text[start:]:
         if not is_case_sensitive:

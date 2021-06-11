@@ -7,10 +7,14 @@ def get_the_most_frequent_word(c, d, text, n):
     is_case_sensitive = True if c == 'yes' else False
     text_counter = Counter()
     key_words = set()
+
     if n:
         for line in text[:n]:
+            line = line.strip()
+            if len(line) > 50:
+                continue
             key_words.add(
-                line.strip() if is_case_sensitive else line.strip().lower())
+                line if is_case_sensitive else line.lower())
     start = 0 if not n else n
     for line in text[start:]:
         if not is_case_sensitive:
@@ -19,9 +23,13 @@ def get_the_most_frequent_word(c, d, text, n):
         for word in line.split():
             if word in key_words:
                 continue
-            if not is_digit_first and word[0].isdigit():
-                continue
+            if word[0].isdigit():
+                if not is_digit_first:
+                    continue
+                if is_digit_first and not (any(map(str.isalpha, word)) or "_" in word):
+                    continue
             text_counter[word] += 1
+
     result = '' if not text_counter else text_counter.most_common(1)[0][0]
     return result
 

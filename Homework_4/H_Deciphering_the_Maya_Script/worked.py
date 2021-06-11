@@ -2,9 +2,7 @@ with open('input.txt') as file:
     lines = file.readlines()
 
 g, s = tuple(map(int, lines[0].split()))
-
 letter_sequence = list(lines[1].strip())
-
 word = list(lines[2].strip())
 
 counter = 0
@@ -15,15 +13,16 @@ buf_sequence = letter_sequence.copy()
 for position, letter in enumerate(word):
     if position <= difference:
         if letter in buf_sequence:
-            buf_sequence[buf_sequence.index(letter)] = False
+            buf_sequence.pop(buf_sequence.index(letter))
             check = position+1
-            while check-position < g:
+            while buf_sequence:
                 if word[check] in buf_sequence:
-                    buf_sequence[buf_sequence.index(word[check])] = False
+                    buf_sequence.pop(
+                        buf_sequence.index(word[check]))
                     check += 1
                 else:
                     break
-            if not any(buf_sequence):
+            if not buf_sequence:
                 counter += 1
         buf_sequence = letter_sequence.copy()
 

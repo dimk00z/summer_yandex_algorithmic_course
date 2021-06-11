@@ -1,27 +1,32 @@
+from collections import deque
+
 with open('input.txt') as file:
     lines = file.readlines()
 
 g, s = tuple(map(int, lines[0].split()))
-letter_sequence = set(lines[1].strip())
-word = lines[2].strip()
+letter_sequence = list(lines[1].strip())
+word = list(lines[2].strip())
+
 counter = 0
-check_letter = 0
-previous_in = False
 difference = s-g
 
+buf_sequence = letter_sequence.copy()
+
 for position, letter in enumerate(word):
-    if letter in letter_sequence:
-
-        if position < difference:
-            check = 1
-            for i in range(1, g+1):
-                next_letter = word[position+i]
-                if next_letter not in letter_sequence:
+    if position <= difference:
+        if letter in buf_sequence:
+            buf_sequence.pop(buf_sequence.index(letter))
+            check = position+1
+            while buf_sequence:
+                if word[check] in buf_sequence:
+                    buf_sequence.pop(buf_sequence.index(word[check]))
+                    check += 1
+                else:
                     break
-                check += 1
-                print(check)
-            if check == g:
+
+            if not buf_sequence:
                 counter += 1
+        buf_sequence = letter_sequence.copy()
 
-
-print(counter)
+with open('output.txt', 'w') as file:
+    file.write(str(counter))

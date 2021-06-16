@@ -1,19 +1,14 @@
 def closest(lst, required_item):
-    low = min(lst)
-    high = max(lst)
-    low_difference = abs(required_item-low)
-    high_difference = abs(required_item-high)
-
-    if low_difference == high_difference:
-        return low
-    return low if low_difference < high_difference else high
+    def absolute_difference_function(
+        list_value): return abs(list_value - required_item)
+    closest_value = min(lst, key=absolute_difference_function)
+    return closest_value
 
 
-def approximate_binary_search(ordered_list,
-                              required_item: int):
+def binary_search(ordered_list,
+                  required_item: int):
     low_value: int = 0
     high_value: int = len(ordered_list)-1
-    result = None
     if required_item > ordered_list[-1]:
         return str(ordered_list[-1])
     if required_item < ordered_list[0]:
@@ -21,16 +16,13 @@ def approximate_binary_search(ordered_list,
     while low_value <= high_value:
         middle_value = (low_value+high_value)//2
         if required_item == ordered_list[middle_value]:
-            result = required_item
-            break
+            return str(required_item)
         if required_item > ordered_list[middle_value]:
             low_value = middle_value+1
         else:
             high_value = middle_value-1
-    if not result:
-        result = closest([ordered_list[low_value],
-                         ordered_list[high_value]], required_item)
-    return str(result)
+    return str(closest([ordered_list[high_value], ordered_list[low_value]],
+                       required_item))
 
 
 def simple_check(first_list, second_list):
@@ -40,8 +32,8 @@ def simple_check(first_list, second_list):
         if number in checked:
             result.append(checked[number])
             continue
-        checked[number] = approximate_binary_search(first_list,
-                                                    number)
+        checked[number] = binary_search(first_list,
+                                        number)
         result.append(checked[number])
     return '\n'.join(result)
 

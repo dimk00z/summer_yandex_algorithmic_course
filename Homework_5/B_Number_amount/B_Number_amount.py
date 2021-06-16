@@ -1,8 +1,32 @@
+
+
 def count_numbers(cars_number, lucky_number, cars_numbers):
-    result = 0
-    for current_position, number in enumerate(cars_numbers):
-        if number == lucky_number:
-            result += 1
+    cnt = 0
+    prev_sum = None
+    prev_j = None
+    sm = 0
+    for i in range(cars_number):
+        if prev_j:
+            j = prev_j
+            sm = prev_sum - cars_numbers[i-1] - cars_numbers[j]
+        else:
+            j = i
+            sm = 0
+        while True:
+            sm += cars_numbers[j]
+            if sm == lucky_number:
+                cnt += 1
+                prev_sum = sm
+                prev_j = j
+                break
+            elif sm > lucky_number:
+                prev_sum = sm
+                prev_j = j
+                break
+            j += 1
+            if j == cars_number:
+                return cnt
+    return cnt
 
 
 with open('input.txt') as file:
@@ -12,4 +36,4 @@ with open('input.txt') as file:
 
 
 with open('output.txt', 'w') as file:
-    file.write(count_numbers(cars_number, lucky_number, cars_numbers))
+    file.write(str(count_numbers(cars_number, lucky_number, cars_numbers)))

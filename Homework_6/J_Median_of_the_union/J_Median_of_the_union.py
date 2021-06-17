@@ -1,34 +1,47 @@
 from statistics import median
 
 
-def find_median_sorted_arrays(arr1, arr2):
-    arr = arr1 + arr2
-    arr.sort()
-    n = len(arr)
-
-    # If length of array is even
+def median(arr, n):
     if n % 2 == 0:
-        z = n // 2
-        e = arr[z]
-        q = arr[z - 1]
-        ans = (e + q) / 2
-        return ans
-
-    # If length of array is odd
+        return (arr[int(n / 2)] +
+                arr[int(n / 2) - 1]) / 2
     else:
-        z = n // 2
-        ans = arr[z]
-        return ans
+        return arr[int(n/2)]
 
 
-def calculate_medians(numbers_lists):
-    print(find_median_sorted_arrays(numbers_lists[0], numbers_lists[1]))
-    print(median(numbers_lists[0] + numbers_lists[2]))
-    return 'dd'
+def get_median(arr1, arr2, n):
+    if n == 2:
+        return (max(arr1[0], arr2[0]) +
+                min(arr1[1], arr2[1])) / 2
+    else:
+        m1 = median(arr1, n)
+        m2 = median(arr2, n)
+        if m1 > m2:
+            if n % 2 == 0:
+                return get_median(arr1[:int(n / 2) + 1],
+                                  arr2[int(n / 2) - 1:], int(n / 2) + 1)
+            else:
+                return get_median(arr1[:int(n / 2) + 1],
+                                  arr2[int(n / 2):], int(n / 2) + 1)
+        else:
+            if n % 2 == 0:
+                return get_median(arr1[int(n / 2 - 1):],
+                                  arr2[:int(n / 2 + 1)], int(n / 2) + 1)
+            else:
+                return get_median(arr1[int(n / 2):],
+                                  arr2[0:int(n / 2) + 1], int(n / 2) + 1)
 
 
 with open('input.txt') as file:
-    numbers_lists = [list(map(int, line.split())) for line in file.readlines()]
-
-with open('output.txt', 'w') as file:
-    file.write(str(calculate_medians(numbers_lists)))
+    lines = file.readlines()
+    n, l = list(map(int, lines[0].split()))
+    arr = [list(map(int, line.split()))
+           for line in lines[1:]]
+print(arr)
+test_arr = arr[1] + arr[2]
+test_arr.sort()
+print(test_arr[l-1])
+print(int(get_median(arr[0], arr[1], l)))
+print(median(test_arr, len(test_arr)))
+# with open('output.txt', 'w') as file:
+#     file.write(str(calculate_medians(numbers_lists, n, l)))

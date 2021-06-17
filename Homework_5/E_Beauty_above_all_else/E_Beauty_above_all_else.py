@@ -2,6 +2,10 @@ from collections import Counter
 
 
 def get_coordinates(n, k, number_list):
+    '''
+    thx to 
+    https://github.com/Yankovsky/yandex-algos-training/blob/master/hw5/e.py
+    '''
     number_counter = Counter()
     left = 0
     result = (0,  len(number_list))
@@ -15,6 +19,7 @@ def get_coordinates(n, k, number_list):
 
             if right - left < result[1] - result[0]:
                 result = (left, right)
+
     return f'{result[0]+1} {result[1]+1}'
 
 

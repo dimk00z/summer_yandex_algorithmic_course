@@ -2,16 +2,20 @@ from collections import Counter
 
 
 def get_coordinates(n, k, number_list):
-    number_counter = Counter(number_list)
+    number_counter = Counter()
     left = 0
-    right = n-1
-    while number_counter[number_list[left]] != 1:
-        number_counter[number_list[left]] -= 1
-        left += 1
-    while number_counter[number_list[right]] != 1:
-        number_counter[number_list[right]] -= 1
-        right -= 1
-    return f'{left+1} {right+1}'
+    result = (0,  len(number_list))
+
+    for right, color in enumerate(number_list):
+        number_counter[color] += 1
+        if len(number_counter) == k:
+            while number_counter[number_list[left]] > 1:
+                number_counter[number_list[left]] -= 1
+                left += 1
+
+            if right - left < result[1] - result[0]:
+                result = (left, right)
+    return f'{result[0]+1} {result[1]+1}'
 
 
 with open('input.txt') as file:

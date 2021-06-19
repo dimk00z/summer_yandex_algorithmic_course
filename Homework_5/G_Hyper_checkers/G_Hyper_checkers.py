@@ -24,7 +24,9 @@ def calculate_variants(n, k, x):
             inner_list += [inner_element]*cnt_with_border[inner_element]
         if len(inner_list) == 1:
             continue
-        inner_set = set(permutations(inner_list, 3))
+        inner_set = set()
+        for var in permutations(inner_list, 3):
+            inner_set.add(var)
         result += len(inner_set)
 
         cnt[element] = 0

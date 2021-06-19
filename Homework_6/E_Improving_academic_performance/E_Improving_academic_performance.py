@@ -1,4 +1,6 @@
 def count(a, b, c):
+    if not a and not b and not c:
+        return '1'
     sum = 2 * a + 3 * b + 4 * c
     cnt = a + b + c
     l = 0

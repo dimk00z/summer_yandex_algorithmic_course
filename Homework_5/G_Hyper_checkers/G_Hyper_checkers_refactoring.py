@@ -18,6 +18,7 @@ def calculate_variants(n, k, x):
         high_border = element*k
         inner_cnt = {}
         inner_position = position
+        # print(last_inner_position)
         while True:
             if inner_position == len(zipped_x):
                 break
@@ -27,22 +28,21 @@ def calculate_variants(n, k, x):
                     cnt[zipped_x[inner_position]] = 2
                 inner_cnt[zipped_x[inner_position]
                           ] = cnt[zipped_x[inner_position]]
-
                 inner_position += 1
             else:
                 break
+
         if len(inner_cnt) < 2:
             continue
         inner_list = []
         for inner_element in inner_cnt:
-
             inner_list.extend([inner_element]*inner_cnt[inner_element])
         if len(inner_list) < 3:
             continue
         inner_set = set(permutations(inner_list, 3))
-
         end_set |= inner_set
-        # end_set |= set(permutations(inner_list, 3))
+        if high_border >= zipped_x[-1]:
+            break
     result += len(end_set)
     return result
 

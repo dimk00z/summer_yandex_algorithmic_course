@@ -1,16 +1,22 @@
-from collections import Counter
 from itertools import permutations
 
 
 def calculate_variants(n, k, x):
     result = 0
-    cnt = Counter(x)
-    zipped_x = list(set(x))
+    zipped_x = set()
+    cnt = {}
+    for element in x:
+        if element not in cnt:
+            cnt[element] = 0
+        cnt[element] += 1
+        zipped_x.add(element)
+    zipped_x = list(zipped_x)
     zipped_x.sort()
+    x = zipped_x
     end_set = set()
     for position, element in enumerate(zipped_x):
         high_border = element*k
-        inner_cnt = Counter()
+        inner_cnt = {}
         inner_position = position
         while True:
             if inner_position == len(zipped_x):
@@ -32,7 +38,6 @@ def calculate_variants(n, k, x):
             inner_list.extend([element]*inner_cnt[element])
         if len(inner_list) < 3:
             continue
-
         end_set |= set(permutations(inner_list, 3))
     result += len(end_set)
     return result

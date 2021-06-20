@@ -34,11 +34,15 @@ def calculate_variants(n, k, x):
         if len(inner_cnt) < 2:
             continue
         inner_list = []
-        for element in inner_cnt:
-            inner_list.extend([element]*inner_cnt[element])
+        for inner_element in inner_cnt:
+
+            inner_list.extend([inner_element]*inner_cnt[inner_element])
         if len(inner_list) < 3:
             continue
-        end_set |= set(permutations(inner_list, 3))
+        inner_set = set(permutations(inner_list, 3))
+
+        end_set |= inner_set
+        # end_set |= set(permutations(inner_list, 3))
     result += len(end_set)
     return result
 

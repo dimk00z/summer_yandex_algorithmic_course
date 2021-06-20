@@ -12,13 +12,11 @@ def calculate_variants(n, k, x):
         zipped_x.add(element)
     zipped_x = list(zipped_x)
     zipped_x.sort()
-    x = zipped_x
     end_set = set()
     for position, element in enumerate(zipped_x):
         high_border = element*k
         inner_cnt = {}
         inner_position = position
-        # print(last_inner_position)
         while True:
             if inner_position == len(zipped_x):
                 break
@@ -41,6 +39,7 @@ def calculate_variants(n, k, x):
             continue
         inner_set = set(permutations(inner_list, 3))
         end_set |= inner_set
+        print(inner_list)
         if high_border >= zipped_x[-1]:
             break
     result += len(end_set)

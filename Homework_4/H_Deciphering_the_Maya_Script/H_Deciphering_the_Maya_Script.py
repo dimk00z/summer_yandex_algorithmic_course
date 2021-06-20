@@ -11,14 +11,11 @@ def decrypt(word, letter_sequence):
     index = 0
     for index in range(letter_sequence_length - 1,
                        word_length):
-        # повыссить счетчик текущего
         word_counter[word[index]] += 1
         if word_counter == letter_sequence_counter:
             answer += 1
-        # понизить счетчик пред элемента
         word_counter[word[index - letter_sequence_length + 1]] -= 1
         if word_counter[word[index - letter_sequence_length + 1]] == 0:
-            # если элемента нет, то удалить из каунтера
             del word_counter[word[index - letter_sequence_length + 1]]
     return answer
 

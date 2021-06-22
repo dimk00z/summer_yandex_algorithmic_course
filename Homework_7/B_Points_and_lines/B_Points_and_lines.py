@@ -9,10 +9,17 @@ with open('input.txt') as file:
 result = ['']*m
 hole_line = []
 for line in lines:
-    hole_line.append((line[0], -1))
-    hole_line.append((line[1], 1))
+    hole_line.append(
+        (min(line[0], line[1]), -1))
+    hole_line.append(
+        (max(line[0], line[1]), 1))
+# del - for fucking ML
+
+del lines
 for point_position in range(m):
     hole_line.append((points[point_position], 0, str(point_position)))
+# the same
+del points
 hole_line.sort()
 count = 0
 for point in hole_line:

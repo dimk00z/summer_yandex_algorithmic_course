@@ -9,6 +9,7 @@ def calculate_variants(n, d, x):
         line_with_distance.append(
             (student + d, 1))
     line_with_distance.sort()
+
     count = 0
     last_count = 0
     current_variant = 0

@@ -18,13 +18,13 @@ def calculate_time(n, times):
             ans += x-start
     if count == n:
         ans += 24*60-start
-    print(ans)
+    return str(ans)
 
 
 with open('input.txt') as file:
     lines = file.readlines()
     # n -checkouts, d - distance between students
-    n = int(lines[0].split())
+    n = int(lines[0])
     times = [tuple(map(int, line.split())) for line in lines[1:]]
 del lines
 

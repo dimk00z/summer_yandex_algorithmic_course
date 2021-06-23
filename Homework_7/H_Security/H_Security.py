@@ -2,10 +2,15 @@ def check_security(full_security):
     result = []
     for security in full_security:
         count = 0
-        for point, type in security:
+        for position, current_security in enumerate(sorted(security)):
+            point, type = current_security
             count += type
+            # print(count, point, type)
             # print(point, type, count)
-            if count > 1:
+            if count == 0 and position != len(security)-1:
+                result.append('Wrong Answer')
+                break
+            if count > 2:
                 result.append('Wrong Answer')
                 break
         else:
@@ -21,10 +26,9 @@ with open('input.txt') as file:
     for line in lines[1:]:
         security = []
         for t1 in line.split()[1::2]:
-            security.append((t1, 1))
+            security.append((int(t1), 1))
         for t2 in line.split()[2::2]:
-            security.append((t2, -1))
-        security.sort()
+            security.append((int(t2), -1))
         full_security.append(security)
     # print(full_security)
 

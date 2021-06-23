@@ -10,16 +10,21 @@ def calculate_variants(n, d, x):
             (student + d, 1))
     line_with_distance.sort()
     count = 0
+    last_count = 0
     current_variant = 0
+
     for point in line_with_distance:
+        count += point[1]*-1
+        if count == 0 or last_count > count:
+            current_variant = 0
         if point[1] == 0:
             if current_variant == 0:
                 current_variant = 1
             final_students[int(point[2])] = current_variant
+            print(point[0], point[2], current_variant)
             current_variant += 1
-        count += point[1]*-1
-        if count == 0:
-            current_variant = 0
+        last_count = count
+
     result = []
     result.append(str(max(final_students)))
     result.append(' '.join(map(str, final_students)))

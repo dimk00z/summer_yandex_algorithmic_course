@@ -16,13 +16,14 @@ def calculate_variants(n, d, x):
 
     for point in line_with_distance:
         count += point[1]*-1
-        if count == 0 or last_count > count:
+        if count == 0:
             current_variant = 0
+
         if point[1] == 0:
             if current_variant == 0:
                 current_variant = 1
             final_students[int(point[2])] = current_variant
-            print(point[0], point[2], current_variant)
+            # print(point[0], point[2], current_variant)
             current_variant += 1
         last_count = count
 

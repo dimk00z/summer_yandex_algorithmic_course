@@ -2,14 +2,22 @@ def check_security(full_security):
     result = []
     for security in full_security:
         count = 0
-        for position, current_security in enumerate(sorted(security)):
+        security.sort()
+        # print()
+        # print(security)
+        if security[-1][0] != 10000 or security[0][0] != 0:
+            result.append('Wrong Answer')
+            continue
+        for position, current_security in enumerate(security):
             point, type = current_security
             count += type
-            # print(count, point, type)
+            # print(position, count, point, type)
             # print(point, type, count)
             if count == 0 and position != len(security)-1:
-                result.append('Wrong Answer')
-                break
+                if current_security[0] != security[position+1][0]:
+                    # print(current_security, security[position+1])
+                    result.append('Wrong Answer')
+                    break
             if count > 2:
                 result.append('Wrong Answer')
                 break

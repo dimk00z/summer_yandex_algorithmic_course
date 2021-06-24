@@ -25,10 +25,9 @@ def check_security(full_security):
             print('last_count ', last_count, 'count ',
                   count, last_count > count, count-1 > 0)
             # print('count ', count)
-            if last_count > count and count-1 > 0:
-                print('Blaaaaaaaaaaaa')
-                result.append('Wrong Answer')
-                break
+            # if last_count > count and count-1 > 0:
+            #     result.append('Wrong Answer')
+            #     break
             if count > 2:
                 result.append('Wrong Answer')
                 break

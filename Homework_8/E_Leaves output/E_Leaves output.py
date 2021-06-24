@@ -20,6 +20,15 @@ class Node():
         else:
             self.data = data
 
+    def get_leaves(self, root):
+        result = []
+        if root:
+            result = self.get_leaves(root.left)
+            result = result+self.get_leaves(root.right)
+            if root.left is None and root.right is None:
+                result.append(root.data)
+        return result
+
     def print_tree(self):
         if self.left:
             self.left.print_tree()
@@ -64,13 +73,7 @@ root = Node(nodes[0])
 result = []
 for node in nodes[1:-1]:
     root.insert(node)
-checked = {}
-for node in nodes[:-1]:
-    if node in checked:
-        continue
-    depth = get_node_from_tree(root, node)[1]
-    result.append(str(depth))
-    checked[node] = True
+
 
 with open('output.txt', 'w') as file:
-    file.write(' '.join(result))
+    file.write('\n'.join(tuple(map(str, sorted(root.get_leaves(root))))))

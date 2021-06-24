@@ -15,7 +15,7 @@ class Person():
         return f'{self.name} : {kids}'
 
 
-def get_pedigree(person):
+def get_bloodline(person):
     kids_count = person.kids_count
 
     def get_descendants_count(person):
@@ -46,7 +46,7 @@ with open('input.txt') as file:
 del lines
 result = []
 for person in persons:
-    children = get_pedigree(persons[person])
+    children = get_bloodline(persons[person])
     result.append(f'{person} {children}')
 result.sort()
 

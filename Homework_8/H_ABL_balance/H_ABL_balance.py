@@ -58,19 +58,23 @@ def max_depth(node):
         return right_depth+1
 
 
+def is_balanced(node):
+    if abs(max_depth(node.left)-max_depth(node.right)) <= 1:
+        return True
+    return False
+
+
 with open('input.txt') as file:
-    nodes = tuple(map(int, file.readlines()[0].split()))
+    nodes = tuple(map(int, file.readlines()[0].split()[:-1]))
 root = Node(nodes[0])
 result = []
-for node in nodes[1:-1]:
+for node in nodes[1:]:
     root.insert(node)
-checked = {}
-for node in nodes[:-1]:
-    if node in checked:
-        continue
-    depth = get_node_from_tree(root, node)[1]
-    result.append(str(depth))
-    checked[node] = True
+checked = []
+for node_value in nodes:
+    node, _ = get_node_from_tree(root, node_value)
+    checked.append(is_balanced(node))
+
 
 with open('output.txt', 'w') as file:
-    file.write(' '.join(result))
+    file.write('YES' if all(checked) else 'NO')

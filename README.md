@@ -1,5 +1,19 @@
 # [Summer Yandex algorithmic course](https://yandex.ru/yaintern/algorithm-training)
- 
+## Домашние задания:
+
+|Номер ДЗ  | Ссылка на контест | Состояние  |
+|---|---|---|
+|  1 | [ДЗ_1](https://contest.yandex.ru/contest/27393/enter/) | 10/10  |
+|  2 | [ДЗ_2](https://contest.yandex.ru/contest/27472/enter/) | 10/10  |
+|  3 | [ДЗ_3](https://contest.yandex.ru/contest/27663/enter/) | 10/10  |
+|  4 | [ДЗ_4](https://contest.yandex.ru/contest/27665/enter/) | 10/10  |
+|  5 | [ДЗ_5](https://contest.yandex.ru/contest/27794/enter/) | 7/10  |
+|  6 | [ДЗ_6](https://contest.yandex.ru/contest/27844/enter/) |  6/10 |
+|  7 | [ДЗ_7](https://contest.yandex.ru/contest/27883/enter/) | 4/10  |
+|  8 | [ДЗ_8](https://contest.yandex.ru/contest/28069/enter/) | 10/10  |
+
+## Видео:
+
 ### 2 июня 	[Лекция «Сложность, тестирование, особые случаи».](https://youtu.be/QLhqYNsPIVo) 
 
 ### 4 июня 	[Лекция «Линейный поиск».](https://youtu.be/SKwB41FrGgU)
@@ -21,14 +35,3 @@
 
 ### 30 июня 	Разбор домашнего задания (за 21 и 23 июня)
 
-## Домашние задания:
-|Номер ДЗ  | Ссылка на контест | Состояние  |
-|---|---|---|
-|  1 | [ДЗ_1](https://contest.yandex.ru/contest/27393/enter/) | 10/10  |
-|  2 | [ДЗ_2](https://contest.yandex.ru/contest/27472/enter/) | 10/10  |
-|  3 | [ДЗ_3](https://contest.yandex.ru/contest/27663/enter/) | 10/10  |
-|  4 | [ДЗ_4](https://contest.yandex.ru/contest/27665/enter/) | 10/10  |
-|  5 | [ДЗ_5](https://contest.yandex.ru/contest/27794/enter/) | 7/10  |
-|  6 | [ДЗ_6](https://contest.yandex.ru/contest/27844/enter/) |  6/10 |
-|  7 | [ДЗ_7](https://contest.yandex.ru/contest/27883/enter/) | 4/10  |
-|  8 | [ДЗ_8](https://contest.yandex.ru/contest/28069/enter/) | 10/10  |

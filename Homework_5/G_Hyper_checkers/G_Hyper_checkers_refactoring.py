@@ -39,7 +39,7 @@ def calculate_variants(n, k, x):
             continue
         inner_set = set(permutations(inner_list, 3))
         end_set |= inner_set
-        print(inner_list)
+        # print(inner_list)
         if high_border >= zipped_x[-1]:
             break
     result += len(end_set)

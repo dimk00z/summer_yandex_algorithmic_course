@@ -9,7 +9,7 @@
 |  4 | [ДЗ_4](https://contest.yandex.ru/contest/27665/enter/) | 10/10  |
 |  5 | [ДЗ_5](https://contest.yandex.ru/contest/27794/enter/) | 10/10  |
 |  6 | [ДЗ_6](https://contest.yandex.ru/contest/27844/enter/) |  6/10 |
-|  7 | [ДЗ_7](https://contest.yandex.ru/contest/27883/enter/) | 4/10  |
+|  7 | [ДЗ_7](https://contest.yandex.ru/contest/27883/enter/) | 7/10  |
 |  8 | [ДЗ_8](https://contest.yandex.ru/contest/28069/enter/) | 10/10  |
 
 ## Видео:
